@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FormEvent } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { ExternalLink, Loader2, Search, Sparkles } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -110,7 +110,9 @@ function App() {
               <Input
                 aria-label="Research question"
                 className="h-10 flex-1"
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  setQuery(event.target.value)
+                }
                 placeholder="What are the latest developments in AI agents?"
                 value={query}
               />
