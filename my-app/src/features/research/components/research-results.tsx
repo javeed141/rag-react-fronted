@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AnswerMarkdown } from "@/features/research/components/answer-markdown";
 import type { ResearchResponse } from "@/types/research";
 
 type ResearchResultsProps = {
@@ -9,8 +10,8 @@ type ResearchResultsProps = {
 
 export function ResearchResults({ result }: ResearchResultsProps) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-      <Card>
+    <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,1fr)]">
+      <Card className="min-w-0">
         <CardHeader>
           <CardTitle>Research summary</CardTitle>
           <CardDescription>
@@ -18,13 +19,11 @@ export function ResearchResults({ result }: ResearchResultsProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="whitespace-pre-wrap leading-7 text-foreground/90">
-            {result.answer}
-          </p>
+          <AnswerMarkdown content={result.answer} />
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="min-w-0">
         <CardHeader>
           <CardTitle>Sources</CardTitle>
           <CardDescription>
@@ -46,7 +45,7 @@ export function ResearchResults({ result }: ResearchResultsProps) {
                 target="_blank"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <p className="line-clamp-2 text-sm font-medium">{source.title}</p>
+                  <p className="line-clamp-2 break-words text-sm font-medium">{source.title}</p>
                   <ExternalLink className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -60,4 +59,3 @@ export function ResearchResults({ result }: ResearchResultsProps) {
     </div>
   );
 }
-
