@@ -9,11 +9,14 @@ type ApiErrorPayload = {
 };
 
 export class ApiError extends Error {
+  readonly status: number;
+
   constructor(
     message: string,
-    public readonly status: number,
+    status: number,
   ) {
     super(message);
+    this.status = status;
     this.name = "ApiError";
   }
 }
