@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rag-react-fronted-beige.vercel.app/sitemap.xml
